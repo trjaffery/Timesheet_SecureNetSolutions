@@ -7,7 +7,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employee
-        fields = ['user', 'employeeID']
+        fields = ['user', 'first_name', 'last_name', 'employeeID']
 
 class UserSerializer(serializers.ModelSerializer):
     employee_profile = EmployeeSerializer(required=True)
