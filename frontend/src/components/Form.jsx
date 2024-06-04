@@ -6,6 +6,7 @@ import "../styles/Form.css";
 
 function Form({route, method}) {
     const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -15,8 +16,16 @@ function Form({route, method}) {
         setLoading(true);
         e.preventDefault();
 
+        const data = { username, password };
+        if (method === "register") {
+            data.first_name = firstName;
+            data.last_name = lastName;
+            data.employeeID = username;
+        }
+        console.log("Rendering form with method:", method);
+
         try {
-            const res = await api.post(route, { username, password })
+            const res = await api.post(route, data)
             if (method === "login") {
                 localStorage.setItem(ACCESS_TOKEN, res.data.access)
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh)
@@ -32,27 +41,47 @@ function Form({route, method}) {
         }
     }
 
-    return <form onSubmit={handleSubmit}>
-        <h1>{method === "login" ? "Login" : "Register"}</h1>
-        <input
-            classname="form-input"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-        />
-        <input
-            classname="form-input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-        />
-        <button classname="form-button" type="submit">
-            {name}
-        </button>
-    </form>
+return (   
+   <form onSubmit={handleSubmit}>
+            <h1>{method === "login" ? "Login" : "Register"}</h1>
+            {method === "register" && (
+                <>
+                    <input
+                        className="form-input"
+                        type="text"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        placeholder="First Name"
+                    />
+                    <input
+                        className="form-input"
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        placeholder="Last Name"
+                    />
+                </>
+            )}
+            <input
+                className="form-input"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Employee ID"
+            />
+            <input
+                className="form-input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+            />
+            <button className="form-button" type="submit" disabled={loading}>
+                {loading ? "Loading..." : method === "login" ? "Login" : "Register"}
+            </button>
+        </form>
+    );
 }
 
 
-export default Form
+export default Form;

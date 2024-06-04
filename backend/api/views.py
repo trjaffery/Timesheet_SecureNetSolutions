@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, EmployeeSerializer, LeaveSerializer, WorkLogSerializer, TaskSerializer
+from .serializers import UserSerializer, LeaveSerializer, WorkLogSerializer, TaskSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Employee, Task, WorkLog, Leave
+from .models import Task, WorkLog, Leave
 
 
 # Create your views here.
