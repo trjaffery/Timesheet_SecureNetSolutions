@@ -47,38 +47,38 @@ function Tasks() {
     };
 
     return (
-        <div>
-            <div>
-                <h2>Tasks</h2>
+        <div className="tasks-container">
+            <h1 className="tasks-title">Tasks</h1>
+            <div className="tasks-list">
                 {tasks.map((task) => (
                     <Task task={task} onDelete={deleteTask} key={task.id} />
                 ))}
             </div>
-            <h2>Create a Task</h2>
-            <form onSubmit={createTask}>
-                <label htmlFor="title">Title:</label>
-                <br />
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    required
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                />
-                <br />
-                <label htmlFor="content">Content:</label>
-                <br />
-                <textarea
-                    id="content"
-                    name="content"
-                    required
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                ></textarea>
-                <br />
-                <input type="submit" value="Submit"></input>
-            </form>
+            <div className="create-task-section">
+                <h2 className="create-task-title">Create a Task</h2>
+                <form className="task-form" onSubmit={createTask}>
+                    <label htmlFor="title" className="form-label">Title:</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        required
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        className="form-input"
+                    />
+                    <label htmlFor="content" className="form-label">Content:</label>
+                    <textarea
+                        id="content"
+                        name="content"
+                        required
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        className="form-textarea"
+                    ></textarea>
+                    <input type="submit" value="Submit" className="form-button" />
+                </form>
+            </div>
         </div>
     );
 }
