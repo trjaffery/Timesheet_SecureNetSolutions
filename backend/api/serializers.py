@@ -15,11 +15,11 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 class TaskSerializer(serializers.ModelSerializer):
-    assigned_to = UserSerializer(read_only=True)
+    employee = UserSerializer(read_only=True)
 
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'assigned_to']
+        fields = ['id', 'title', 'content', 'created_at', 'employee']
 
 
 class WorkLogSerializer(serializers.ModelSerializer):
@@ -28,7 +28,7 @@ class WorkLogSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WorkLog
-        fields = ['id', 'employee', 'task', 'date', 'hours_worked', 'description']
+        fields = ['id', 'employee', 'date', 'hours_worked', 'description']
         extra_kwargs = {"employee": {"read_only": True}}
 
 class LeaveSerializer(serializers.ModelSerializer):

@@ -1,0 +1,115 @@
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.tasks-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tasks-title {
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: center;
+    color: #fff;
+}
+
+.tasks-list {
+    margin-bottom: 20px;
+}
+
+.task-container {
+    padding: 15px;
+    margin: 20px 0;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #444;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task-title {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.task-content {
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.task-date {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.delete-button {
+    background-color: #f44336; /* Red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f; /* Darker red */
+}
+
+.create-task-title {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-label {
+    margin: 10px 0 5px 0;
+    color: #ccc;
+    align-self: flex-start;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #555;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.form-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+}
+
+.form-button:hover {
+    background-color: #0056b3; /* Darker blue */
+}

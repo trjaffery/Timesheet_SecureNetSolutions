@@ -1,10 +1,13 @@
-import react from "react"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
-import Home from "./pages/Home"
-import NotFound from "./pages/NotFound"
-import ProtectedRoute from "./components/ProtectedRoute"
+import react from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import Leave from "./pages/Leave";
+import Notfound from "./pages/Notfound";
+import Worklog from "./pages/Worklog";
+import Tasks from "./pages/Tasks";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function Logout() {
   localStorage.clear()
@@ -28,10 +31,36 @@ function App() {
             </ProtectedRoute>
           }
         />
+        
+        <Route
+        path="/worklogs"
+        element={
+          <ProtectedRoute>
+            <Worklog />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path="/tasks"
+        element={
+          <ProtectedRoute>
+            <Tasks />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path="/leave"
+        element={
+          <ProtectedRoute>
+            <Leave />
+          </ProtectedRoute>
+        }
+        />
+
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
-        <Route path="*" element={<NotFound />}></Route>
+        <Route path="*" element={<Notfound />}></Route>
       </Routes>
     </BrowserRouter>
   )
