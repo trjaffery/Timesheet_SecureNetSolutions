@@ -24,7 +24,6 @@ class TaskSerializer(serializers.ModelSerializer):
 
 class WorkLogSerializer(serializers.ModelSerializer):
     employee = UserSerializer(read_only=True)
-    task = TaskSerializer()
 
     class Meta:
         model = WorkLog

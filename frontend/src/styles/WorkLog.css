@@ -1,0 +1,70 @@
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.worklog-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-view {
+    flex: 2;
+    margin-right: 20px;
+}
+
+.worklog-form {
+    flex: 1;
+    padding: 20px;
+    background-color: #444;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.worklog-form h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    margin: 10px 0 5px 0;
+    color: #ccc;
+    align-self: flex-start;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #555;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.form-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+}
+
+.form-button:hover {
+    background-color: #0056b3; /* Darker blue */
+}

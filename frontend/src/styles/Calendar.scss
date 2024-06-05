@@ -1,0 +1,25 @@
+@import 'react-big-calendar/lib/addons/dragAndDrop/styles';
+
+
+// You can override or add custom styles here
+
+.rbc-calendar {
+    color: white;
+}
+    .rbc-toolbar button,
+    .rbc-header,
+    .rbc-time-header,
+    .rbc-event,
+    .rbc-event-label,
+    .rbc-time-content {
+      color: white; // Ensure all elements inherit the same text color
+      font-family: 'Calibri', Courier, monospace;
+}
+
+.rbc-today {
+    background-color: gray;
+}
+
+.rbc-button-link {
+    color: white; // Ensure all elements inherit the same text color
+}

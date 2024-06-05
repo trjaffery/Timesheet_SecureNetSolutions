@@ -7,16 +7,22 @@ body {
 }
 
 .tasks-container {
-    max-width: 1200px;
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between;
+    min-width: 900px; /* Increased width */
     margin: 50px auto;
-    padding: 20px;
+    padding: 30px;
     background-color: #333;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.tasks-title {
-    margin-bottom: 20px;
+.tasks-viewer {
+    flex: 2; /* Adjust flex-grow to control width */
+    margin-right: 20px;
+}
+
+.tasks-title, .create-task-title {
     font-size: 28px;
     text-align: center;
     color: #fff;
@@ -68,28 +74,35 @@ body {
     background-color: #d32f2f; /* Darker red */
 }
 
-.create-task-title {
-    margin-top: 30px;
-    font-size: 24px;
-    color: #fff;
-    text-align: center;
-}
-
-.task-form {
+.create-task-section {
+    flex: 1; /* Adjust flex-grow to control width */
+    padding: 20px;
+    background-color: #444;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.create-task-title {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .form-label {
     margin: 10px 0 5px 0;
     color: #ccc;
-    align-self: flex-start;
 }
 
 .form-input, .form-textarea {
     width: 100%;
-    max-width: 400px;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #555;

@@ -47,12 +47,15 @@ function Tasks() {
     };
 
     return (
+        
         <div className="tasks-container">
-            <h1 className="tasks-title">Tasks</h1>
-            <div className="tasks-list">
-                {tasks.map((task) => (
-                    <Task task={task} onDelete={deleteTask} key={task.id} />
-                ))}
+            <div className="tasks-viewer">
+                <h1 className="tasks-title">Tasks</h1>
+                <div className="tasks-list">
+                    {tasks.map((task) => (
+                        <Task task={task} onDelete={deleteTask} key={task.id} />
+                    ))}
+                </div>
             </div>
             <div className="create-task-section">
                 <h2 className="create-task-title">Create a Task</h2>
