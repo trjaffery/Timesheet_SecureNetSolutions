@@ -27,7 +27,7 @@ class WorkLogSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WorkLog
-        fields = ['id', 'employee', 'date', 'hours_worked', 'description']
+        fields = ['id', 'employee', 'date', 'start_time', 'end_time']
         extra_kwargs = {"employee": {"read_only": True}}
 
 class LeaveSerializer(serializers.ModelSerializer):

@@ -5,7 +5,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Leave from "./pages/Leave";
 import Notfound from "./pages/Notfound";
-import Worklog from "./pages/Worklog";
+import Worklogs from "./pages/Worklogs";
 import Tasks from "./pages/Tasks";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -36,7 +36,7 @@ function App() {
         path="/worklogs"
         element={
           <ProtectedRoute>
-            <Worklog />
+            <Worklogs />
           </ProtectedRoute>
         }
         />
