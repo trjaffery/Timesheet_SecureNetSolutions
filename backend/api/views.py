@@ -39,6 +39,12 @@ class WorkLogListCreateView(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         return WorkLog.objects.filter(employee=user)
+    
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(employee=self.request.user)  # Set employee here
+        else:
+            print(serializer.errors)
 
 class WorkLogRetrieveUpdateDestroyView(generics.DestroyAPIView):
     serializer_class = WorkLogSerializer
@@ -55,6 +61,12 @@ class LeaveListCreateView(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         return Leave.objects.filter(employee=user)
+    
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(employee=self.request.user)  # Set employee here
+        else:
+            print(serializer.errors)
 
 class LeaveRetrieveUpdateDestroyView(generics.DestroyAPIView):
     serializer_class = LeaveSerializer

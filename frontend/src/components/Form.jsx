@@ -20,7 +20,6 @@ function Form({route, method}) {
         if (method === "register") {
             data.first_name = firstName;
             data.last_name = lastName;
-            data.employeeID = username;
         }
         console.log("Rendering form with method:", method);
 

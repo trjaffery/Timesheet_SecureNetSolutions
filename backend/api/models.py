@@ -13,7 +13,7 @@ class Task(models.Model):
         return self.title
 
 class WorkLog(models.Model):
-    employee = models.ForeignKey(User, on_delete=models.CASCADE, related_name='work_logs')
+    employee = models.ForeignKey(User, on_delete=models.CASCADE, related_name='work_logs', default='')
     date = models.DateField()
     start_time = models.TimeField(auto_now=False, auto_now_add=False, blank=True, null=True)
     end_time = models.TimeField(auto_now=False, auto_now_add=False, blank=True, null=True)
