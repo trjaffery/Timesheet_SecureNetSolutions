@@ -6,6 +6,28 @@ body {
     padding: 0;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Optional: centers buttons vertically */
+}
+
+.button {
+    background-color: #007bff;    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+.button:hover {
+    background-color: #0056b3; /* Darker blue */
+  }
+
 .worklog-container {
     display: flex;
     max-width: 1200px;
@@ -58,6 +80,7 @@ body {
     background-color: #007bff; /* Blue */
     color: white;
     border: none;
+    font-size: small;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;

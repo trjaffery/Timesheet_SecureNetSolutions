@@ -7,6 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
     height: 100vh;
 }
 
@@ -33,4 +34,14 @@ body {
 
 .nav-button:hover {
     background-color: #0056b3;
+}
+
+.logout-button {
+    margin-top: 40px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+}
+.logout-button:hover {
+    background-color: gray;
 }

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import api from "../api"; // Ensure the path is correct
-import "../styles/Calendar.scss"; // Ensure the path is correct
-import "../styles/WorkLogs.css"; // Ensure the path is correct
+import api from "../api"; 
+import "../styles/Calendar.scss"; 
+import "../styles/WorkLogs.css"; 
 
 const localizer = momentLocalizer(moment);
 
@@ -20,6 +20,7 @@ const WorkLogs = () => {
     useEffect(() => {
         getLogs();
     }, []);
+
 
     const getLogs = () => {
         api
@@ -49,6 +50,7 @@ const WorkLogs = () => {
 
     const handleSelectEvent = (event) => {
         setSelectedEvent(event);
+        
         setWorkLogData({
             date: moment(event.start).format("YYYY-MM-DD"),
             start_time: moment(event.start).format("HH:mm"),
@@ -73,81 +75,122 @@ const WorkLogs = () => {
     };
 
     const handleSubmit = (e) => {
-        const { date, start_time, end_time } = workLogData;    
-        const formattedData = { date, start_time, end_time };
-        console.log("Submitting work log:", formattedData);    
         e.preventDefault();
-        api.post("/api/worklogs/", { date, start_time, end_time })
+      
+        const { date, start_time, end_time } = workLogData;
+        const formattedData = { date, start_time, end_time };
+        console.log("Submitting work log:", formattedData);
+      
+        if (selectedEvent) {
+          // Edit existing event
+          api.put(`/api/worklogs/update/${selectedEvent.id}/`, formattedData) 
             .then((res) => {
-                if (res.status === 201) {
-                    alert("Work log created!");
-                    const newEvent = {
-                        title: `Log: ${start_time} - ${end_time}`,
-                        start: new Date(date + "T" + start_time),
-                        end: new Date(date + "T" + end_time),
-                        allDay: false,
-                    };
-                    setEvents([...events, newEvent]); // Update the events state
-                } else {
-                    alert("Failed to create work log.");
-                }
+              if (res.status === 200) {
+                alert("Work log updated!");
+      
+                
+                const updatedEvents = events.map((event) =>
+                  event.id === selectedEvent.id ? { ...event, ...formattedData } : event
+                );
+                setEvents(updatedEvents);
+                getLogs(); 
+              } else {
+                alert("Failed to update work log.");
+              }
             })
             .catch((err) => alert(err));
-    };
+        } else {
+          
+          api.post("/api/worklogs/", formattedData)
+            .then((res) => {
+              if (res.status === 201) {
+                alert("Work log created!");
+                const newEvent = {
+                  title: "Log:",
+                  start: moment(new Date(date + "T" + start_time)).format("HH:mm"),
+                  end: moment(new Date(date + "T" + end_time)).format("HH:mm"),
+                  allDay: false,
+                };
+                setEvents([...events, newEvent]); 
+                getLogs();
+              } else {
+                alert("Failed to create work log.");
+              }
+            })
+            .catch((err) => alert(err));
+        }
+      };
 
     return (
-        <div className="worklog-container">
-            <div className="calendar-view">
-                <Calendar
-                    localizer={localizer}
-                    events={events}
-                    startAccessor="start"
-                    endAccessor="end"
-                    style={{ height: 500 }}
-                    selectable
-                    onSelectSlot={handleSelectSlot}
-                    onSelectEvent={handleSelectEvent}
-                    defaultView="week"
-                    views={['week']}
-                />
+        <>
+            <div className="button-container">
+                <button onClick={() => window.location.href = "/"} className="button">Home</button>
+                <button onClick={() => window.location.href = "/logout"} className="button">Log out</button>
             </div>
-            <div className="worklog-form">          
-                <h2>{selectedEvent ? "Edit Work Log" : "Create Work Log"}</h2>       
-                <form onSubmit={selectedEvent ? deleteLog : handleSubmit}>                    
-                    <label htmlFor="date" className="form-label">Date:</label>
-                    <input
-                        type="date"
-                        id="date"
-                        name="date"
-                        onChange={handleInputChange}
-                        required
-                        value={workLogData.date}
-                        className="form-input"
+            <div className="worklog-container">
+                <div className="calendar-view">
+                    <Calendar
+                        localizer={localizer}
+                        min={new Date().setHours(6, 0, 0, 0)} 
+                        max={new Date().setHours(23, 59, 59, 999)}
+                        events={events}
+                        startAccessor="start"
+                        endAccessor="end"
+                        style={{ height: 500 }}
+                        selectable
+                        onSelectSlot={handleSelectSlot}
+                        onSelectEvent={handleSelectEvent}
+                        defaultView="week"
+                        views={['week']}
                     />
-                    <label htmlFor="start_time" className="form-label">Start Time:</label>          
-                    <input
-                        type="time"
-                        id="start_time"
-                        name="start_time"
-                        required
-                        onChange={handleInputChange}
-                        value={workLogData.start_time}
-                        className="form-input"
-                    />
-                    <label htmlFor="end_time" className="form-label">End Time:</label>          
-                    <input
-                        type="time"
-                        id="end_time"
-                        name="end_time"
-                        required
-                        onChange={handleInputChange}
-                        value={workLogData.end_time}
-                        className="form-input"
-                    />
-                    <input type="submit" value="Submit" className="form-button" />
-                </form>
+                </div>
+                <div className="worklog-form">          
+                    <h2>{selectedEvent ? "Edit Work Log" : "Create Work Log"}</h2>       
+                    <form onSubmit={handleSubmit}>                    
+                        <label htmlFor="date" className="form-label">Date:</label>
+                        <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            onChange={handleInputChange}
+                            required
+                            value={workLogData.date}
+                            className="form-input"
+                        />
+                        <label htmlFor="start_time" className="form-label">Start Time:</label>          
+                        <input
+                            type="time"
+                            id="start_time"
+                            name="start_time"
+                            required
+                            onChange={handleInputChange}
+                            value={workLogData.start_time}
+                            className="form-input"
+                        />
+                        <label htmlFor="end_time" className="form-label">End Time:</label>          
+                        <input
+                            type="time"
+                            id="end_time"
+                            name="end_time"
+                            required
+                            onChange={handleInputChange}
+                            value={workLogData.end_time}
+                            className="form-input"
+                        />
+                        {selectedEvent && (
+                        <button
+                            type="button"
+                            className="form-button"
+                            onClick={() => deleteLog(selectedEvent.id)}
+                        >
+                            Delete Log
+                        </button>
+                        )}
+                        <input type="submit" value={selectedEvent ? "Edit Log" : "Submit"} className="form-button" />
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

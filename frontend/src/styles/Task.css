@@ -6,6 +6,27 @@ body {
     padding: 0;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Optional: centers buttons vertically */
+}
+
+.button {
+    background-color: #007bff;    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+.button:hover {
+    background-color: #0056b3; /* Darker blue */
+  }
 .tasks-container {
     display: flex; /* Use flexbox for layout */
     justify-content: space-between;

@@ -46,7 +46,7 @@ class WorkLogListCreateView(generics.ListCreateAPIView):
         else:
             print(serializer.errors)
 
-class WorkLogRetrieveUpdateDestroyView(generics.DestroyAPIView):
+class WorkLogRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = WorkLogSerializer
     permission_classes = [IsAuthenticated]
 

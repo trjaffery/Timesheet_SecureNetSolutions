@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Home.css'; // Make sure the path to your CSS file is correct
+import '../styles/Home.css'; 
 
 const Home = () => {
     const navigate = useNavigate();
@@ -19,6 +19,7 @@ const Home = () => {
                     Tasks
                 </button>
             </div>
+            <button onClick={() => navigate('/logout')} className="logout-button">Log out</button>
         </div>
     );
 };
