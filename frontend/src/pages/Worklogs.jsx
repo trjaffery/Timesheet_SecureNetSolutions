@@ -28,7 +28,7 @@ const WorkLogs = () => {
             .then((res) => res.data)
             .then((data) => {
                 const logs = data.map((log) => ({
-                    title: `Log: ${log.start_time} - ${log.end_time}`,
+                    title: `Work: ${log.start_time} - ${log.end_time}`,
                     start: new Date(log.date + "T" + log.start_time),
                     end: new Date(log.date + "T" + log.end_time),
                     allDay: false,
@@ -79,7 +79,6 @@ const WorkLogs = () => {
       
         const { date, start_time, end_time } = workLogData;
         const formattedData = { date, start_time, end_time };
-        console.log("Submitting work log:", formattedData);
       
         if (selectedEvent) {
           // Edit existing event
@@ -106,7 +105,7 @@ const WorkLogs = () => {
               if (res.status === 201) {
                 alert("Work log created!");
                 const newEvent = {
-                  title: "Log:",
+                  title: "Work:",
                   start: moment(new Date(date + "T" + start_time)).format("HH:mm"),
                   end: moment(new Date(date + "T" + end_time)).format("HH:mm"),
                   allDay: false,
@@ -136,7 +135,7 @@ const WorkLogs = () => {
                         events={events}
                         startAccessor="start"
                         endAccessor="end"
-                        style={{ height: 500 }}
+                        style={{ height: 500 , width: 800}}
                         selectable
                         onSelectSlot={handleSelectSlot}
                         onSelectEvent={handleSelectEvent}

@@ -1,7 +1,36 @@
-body {
-    background-color: #222;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+.leave-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.calendar-view {
+    flex: 1;
+}
+
+.leave-form {
+    flex: 1;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.form-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
 }
