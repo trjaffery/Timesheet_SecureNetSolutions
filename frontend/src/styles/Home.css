@@ -39,7 +39,7 @@ body {
 .logout-button {
     margin-top: 40px;
     color: black;
-    font-weight: bold;
+    font-weight: normal;
     background-color: white;
 }
 .logout-button:hover {

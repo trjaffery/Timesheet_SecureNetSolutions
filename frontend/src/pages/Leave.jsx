@@ -30,8 +30,8 @@ const Leave = () => {
             .then((data) => {
                 const leave = data.map((leave) => ({
                     title: "Leave",
-                    start: new Date(leave.start_date),
-                    end: new Date(leave.end_date),
+                    start: moment(leave.start_date).toDate(),
+                    end: moment(leave.end_date).toDate(),
                     allDay: true,
                     ...leave,
                 }));
@@ -89,8 +89,8 @@ const Leave = () => {
                     alert("Leave created!");
                     const newEvent = {
                         title: 'Leave',
-                        start: new Date(formattedData.start_date),
-                        end: new Date(formattedData.end_date),
+                        start: moment(formattedData.start_date).toDate(), 
+                        end: moment(formattedData.end_date).toDate(),
                         allDay: true,
                     };
                     setEvents([...events, newEvent]);
@@ -104,6 +104,10 @@ const Leave = () => {
 
     return (
         <>
+            <div className="button-container">
+                <button onClick={() => window.location.href = "/"} className="leave-button">Home</button>
+                <button onClick={() => window.location.href = "/logout"} className="leave-button">Log out</button>
+            </div>
             <div className="leave-container">
                 <div className="calendar-view">
                     <Calendar
@@ -160,7 +164,7 @@ const Leave = () => {
                             value={leaveData.description}
                             className="form-input"
                         />
-                        {selectedEvent && (
+                        {selectedEvent ? (
                             <button
                                 type="button"
                                 className="form-button"
@@ -168,8 +172,9 @@ const Leave = () => {
                             >
                                 Delete
                             </button>
+                        ) : (
+                            <input type="submit" value="Submit" className="form-button" />
                         )}
-                        <input type="submit" value={"Submit"} className="form-button" />
                     </form>
                 </div>
             </div>

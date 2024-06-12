@@ -39,7 +39,7 @@ body {
 }
 
 .form-button {
-  width: 95%;
+  width: 100%;
   padding: 10px;
   margin: 20px 0;
   background-color: #007bff;
@@ -57,4 +57,17 @@ body {
 .form-button:disabled {
   background-color: #555;
   cursor: not-allowed;
+}
+
+.register-button {
+    color: black;
+    width: 100%;
+    padding: 10px;
+    font-weight: normal;
+    border:none;
+    font-size: small;
+    background-color: white;
+}
+.register-button:hover {
+    background-color: gray;
 }

@@ -78,6 +78,11 @@ return (
             <button className="form-button" type="submit" disabled={loading}>
                 {loading ? "Loading..." : method === "login" ? "Login" : "Register"}
             </button>
+            {method==="login" && (
+                <button className="register-button" onClick={() => window.location.href = "/register"}>Register</button>
+            )
+
+            }
         </form>
     );
 }
