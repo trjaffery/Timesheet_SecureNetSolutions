@@ -23,3 +23,5 @@ What things you need to install the software and how to install them:
 
 ```bash
 npm install npm@latest -g
+pip install django
+pip install djangorestframework
