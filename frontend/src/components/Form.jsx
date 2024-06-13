@@ -3,6 +3,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/Form.css";
+import LoadingIndicator from "./LoadingIndicator";
 
 function Form({route, method}) {
     const [firstName, setFirstName] = useState("");
@@ -21,8 +22,6 @@ function Form({route, method}) {
             data.first_name = firstName;
             data.last_name = lastName;
         }
-        console.log("Rendering form with method:", method);
-
         try {
             const res = await api.post(route, data)
             if (method === "login") {
@@ -42,7 +41,7 @@ function Form({route, method}) {
 
 return (   
    <form onSubmit={handleSubmit}>
-            <h1>{method === "login" ? "Login" : "Register"}</h1>
+            <h1 className="form-title">{method === "login" ? "Login" : "Register"}</h1>
             {method === "register" && (
                 <>
                     <input
@@ -75,6 +74,7 @@ return (
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
             />
+            {loading && (<LoadingIndicator />)}
             <button className="form-button" type="submit" disabled={loading}>
                 {loading ? "Loading..." : method === "login" ? "Login" : "Register"}
             </button>

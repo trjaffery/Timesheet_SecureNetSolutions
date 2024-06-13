@@ -1,17 +1,6 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #222;
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
 
 .form-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
@@ -24,9 +13,10 @@ body {
 }
 
 .form-title {
+  display: flex;
   margin-bottom: 20px;
-  font-size: 24px;
-  text-align: center;
+  justify-content: center;
+  font-size: 40px;
 }
 
 .form-input {
@@ -61,6 +51,7 @@ body {
 
 .register-button {
     color: black;
+    border-radius: 4px;
     width: 100%;
     padding: 10px;
     font-weight: normal;

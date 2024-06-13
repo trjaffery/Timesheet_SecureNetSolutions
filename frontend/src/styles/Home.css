@@ -37,7 +37,13 @@ body {
 }
 
 .logout-button {
+    font-family: Arial, sans-serif;
+    font-size: medium;
     margin-top: 40px;
+    border-radius: 8px;
+    border: none;
+    padding: 15px;
+    width: 200px;
     color: black;
     font-weight: normal;
     background-color: white;
