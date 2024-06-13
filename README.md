@@ -58,6 +58,7 @@ python manage.py runserver
 
 6. Start the frontend server in a new terminal
 ```bash
+cd frontend/
 npm start
 ```
 
