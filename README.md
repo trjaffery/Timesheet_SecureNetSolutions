@@ -11,7 +11,7 @@ This Timesheet Application is designed to help organizations manage and track em
 
 - **Backend**: Django
 - **Frontend**: React
-- **Database**: MySQL
+- **Database**: SQLite
 
 ## Getting Started
 
